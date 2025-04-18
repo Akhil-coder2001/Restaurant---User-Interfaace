@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tindam Ra - Restaurant</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+        .carousel-section {
+            height: 100vh;
+        }
+        .carousel-item {
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .carousel-caption {
+            position: relative;
+            z-index: 1;
+            top: 40%;
+            transform: translateY(-50%);
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        .menu-item {
+            transition: transform 0.3s ease-in-out;
+            transform: none;
+            position: relative;
+        }
+        .menu-item:hover {
+            transform: scale(1.05) !important;
+        }
+        .card {
+            overflow: hidden;
+        }
+        .card-img-top {
+            height: 300px;
+            width: 100%;
+            object-fit: contain;
+        }
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 20px 0;
+        }
+        @keyframes letterFade {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .navbar-brand span {
+            display: inline-block;
+            opacity: 0;
+            animation: letterFade 0.6s forwards;
+        }
+        /* Style for Google Translate dropdown */
+        #google_translate_element {
+            margin-left: 10px;
+        }
+        #google_translate_element select {
+            background: transparent;
+            color: white;
+            border: 1px solid #ffffff80;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 0.9rem;
+        }
+        #google_translate_element select option {
+            background: #333;
+            color: white;
+        }
+        #google_translate_element select:hover {
+            background: #ffffff20;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span style="animation-delay: 0s;">T</span>
+                <span style="animation-delay: 0.1s;">i</span>
+                <span style="animation-delay: 0.2s;">n</span>
+                <span style="animation-delay: 0.3s;">d</span>
+                <span style="animation-delay: 0.4s;">a</span>
+                <span style="animation-delay: 0.5s;">m</span>
+                <span style="animation-delay: 0.6s;"> </span>
+                <span style="animation-delay: 0.7s;">R</span>
+                <span style="animation-delay: 0.8s;">a</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#reserveModal">Reserve Table</a>
+                    </li>
+                    <li class="nav-item">
+                        <div id="google_translate_element"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carousel Section -->
+    <section id="home" class="carousel-section">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');">
+                    <div class="carousel-caption" data-aos="fade-up">
+                        <h1 style="padding-right: 500px;">Welcome to Tindam Ra</h1>
+                        <p style="padding-right: 500px;">Savor the Flavors of Exquisite Dining</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5');">
+                    <div class="carousel-caption" data-aos="fade-up">
+                        <h1 style="padding-right: 500px;">Delicious Culinary Experience</h1>
+                        <p style="padding-right: 500px;">Indulge in our chef's special dishes</p>
+                    </div>
+                </div>
+                <div class="carousel-item" style="background-image: url('https://images.unsplash.com/photo-1552566626-52f8b828add9');">
+                    <div class="carousel-caption" data-aos="fade-up">
+                        <h1 style="padding-right: 500px;">Cozy Ambiance</h1>
+                        <p style="padding-right: 500px;">Perfect for family and friends</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Our Menu</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="menu-item">
+                            <img src="https://recipes.net/wp-content/uploads/2023/05/fisherman-s-grilled-salmon-recipe_c3a75ee6473a0e64e0bb39fea692bf51.jpeg" class="card-img-top" alt="Grilled Salmon">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Grilled Salmon</h5>
+                                <p class="card-text">Fresh salmon with lemon herb sauce.</p>
+                                <p class="fw-bold">₹650</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="menu-item">
+                            <img src="https://www.cookingclassy.com/wp-content/uploads/2018/09/pasta-primavera-6.jpg" class="card-img-top" alt="Pasta Primavera">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Pasta Primavera</h5>
+                                <p class="card-text">Fresh vegetables with creamy pasta.</p>
+                                <p class="fw-bold">₹750</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="menu-item">
+                            <img src="https://tse4.mm.bing.net/th?id=OIP.1Ci7uxv1l45zOXMlTad5dgHaFj&rs=1&pid=ImgDetMain" class="card-img-top" alt="Steak Fiesta">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">Steak Fiesta</h5>
+                                <p class="card-text">Juicy steak with roasted potatoes.</p>
+                                <p class="fw-bold">₹450</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">About Tindam Ra</h2>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9" class="img-fluid rounded" alt="Restaurant">
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <p class="lead">Tindam Ra is a place where culinary arts meet passion. Our chefs craft dishes with the freshest ingredients to deliver an unforgettable dining experience.</p>
+                    <p>Established in 2020, we aim to bring flavors from around the world to your plate in a cozy and welcoming environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Contact Us</h2>
+            <div class="row">
+                <div class="col-md-6" data-aos="fade-right">
+                    <h4>Get in Touch</h4>
+                    <p><strong>Address:</strong> Vittalrao Nagar, Hyderabad</p>
+                    <p><strong>Phone:</strong> +91 8400256552</p>
+                    <p><strong>Email:</strong> info@AscusTech.com</p>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class.profiler-section {
+    display: none;
+}mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <p>© 2025 Tindam Ra. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Reserve Table Modal -->
+    <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="reserveModalLabel">Reserve a Table</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reserveForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="date" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="time" class="form-label">Time</label>
+                            <input type="time" class="form-control" id="time" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="guests" class="form-label">Number of Guests</label>
+                            <input type="number" class="form-control" id="guests" min="1" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Reservation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,hi,te,ta',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Handle form submission
+        document.getElementById('reserveForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+
+            if (name && date && time && guests) {
+                alert(`Reservation successful for ${name}! Date: ${date}, Time: ${time}, Guests: ${guests}`);
+                this.reset();
+                bootstrap.Modal.getInstance(document.getElementById('reserveModal')).hide();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        // Smooth scrolling for navbar links
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#') && href.length > 1) { // Check if href is not just '#'
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) { // Ensure target exists
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
